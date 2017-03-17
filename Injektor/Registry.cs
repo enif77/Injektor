@@ -104,6 +104,27 @@ namespace Injektor
         }
 
         /// <summary>
+        /// Registers an instance of a type.
+        /// Ex: Registry.RegisterInstance(instanceWithSomeType, typeof(IInterfaceThatIsIplementedByTheInstanceWithSomeType));
+        /// </summary>
+        /// <typeparam name="T">A type of an instance.</typeparam>
+        /// <param name="instance">An instance.</param>
+        /// <param name="asType">As which type this instance should be registered</param>
+        public static void RegisterInstance<T>(T instance, Type asType) where T : class
+        {
+            lock (Lock)
+            {
+                // Do not allow to register a type more than once.
+                if (InstancesDictionary.ContainsKey(asType))
+                {
+                    throw new InstanceAlreadyRegisteredException(asType.FullName);
+                }
+
+                InstancesDictionary.Add(asType, instance);
+            }
+        }
+
+        /// <summary>
         /// Gets an instance of a specific type.
         /// </summary>
         /// <typeparam name="T">A type of an instance.</typeparam>
