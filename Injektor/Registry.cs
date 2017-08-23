@@ -33,8 +33,20 @@ namespace Injektor
     /// </summary>
     public class InstanceNotRegisteredException : Exception
     {
+        public InstanceNotRegisteredException() : base()
+        {
+        }
+
         public InstanceNotRegisteredException(string message)
             : base(message)
+        {
+        }
+        
+        public InstanceNotRegisteredException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected InstanceNotRegisteredException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context)
         {
         }
     }
@@ -44,8 +56,20 @@ namespace Injektor
     /// </summary>
     public class InstanceAlreadyRegisteredException : Exception
     {
+        public InstanceAlreadyRegisteredException() : base()
+        {
+        }
+
         public InstanceAlreadyRegisteredException(string message)
             : base(message)
+        {
+        }
+
+        public InstanceAlreadyRegisteredException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected InstanceAlreadyRegisteredException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context)
         {
         }
     }
